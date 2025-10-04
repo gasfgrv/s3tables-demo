@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: s3tables-demo
+
+aws:
+  access-key: ${AWS_ACCESS_KEY_ID}
+  secret-key: ${AWS_SECRET_ACCESS_KEY}
+  session-token: ${AWS_SESSION_TOKEN:}
+  region: ${AWS_REGION:us-east-1}
+  s3-table-arn: ${S3_TABLE_ARN}
