@@ -1,5 +1,6 @@
-package gasfgrv.s3tables.config;
+package gasfgrv.s3tables.infrastructure.config;
 
+import gasfgrv.s3tables.infrastructure.prop.AwsProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
@@ -21,12 +22,12 @@ public class AwsConfig {
 
     @Bean
     public AwsCredentials awsCredentials() {
-        if (awsProperties.getSessionToken() != null && !awsProperties.getSessionToken().isEmpty())
-            return AwsSessionCredentials.create(awsProperties.getAccessKey(),
-                    awsProperties.getSecretKey(),
-                    awsProperties.getSessionToken());
+        if (awsProperties.sessionToken() != null && !awsProperties.sessionToken().isEmpty())
+            return AwsSessionCredentials.create(awsProperties.accessKey(),
+                    awsProperties.secretKey(),
+                    awsProperties.sessionToken());
 
-        return AwsBasicCredentials.create(awsProperties.getAccessKey(), awsProperties.getSecretKey());
+        return AwsBasicCredentials.create(awsProperties.accessKey(), awsProperties.secretKey());
     }
 
     @Bean
