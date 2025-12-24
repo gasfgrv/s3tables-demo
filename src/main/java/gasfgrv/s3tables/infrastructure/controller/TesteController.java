@@ -1,7 +1,7 @@
-package gasfgrv.s3tables.controller;
+package gasfgrv.s3tables.infrastructure.controller;
 
-import gasfgrv.s3tables.controller.dto.TableDto;
-import gasfgrv.s3tables.service.ConsultaService;
+import gasfgrv.s3tables.infrastructure.dto.TableDto;
+import gasfgrv.s3tables.application.ConsultaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
