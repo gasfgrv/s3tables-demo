@@ -1,0 +1,12 @@
+services:
+  localstack:
+    container_name: localstack_s3tables
+    image: localstack/localstack:4.14.0
+    ports:
+      - "127.0.0.1:4566:4566"
+    environment:
+      SERVICES: s3tables,s3
+      DEBUG: 1
+    volumes:
+      - "./init-s3tables.sh:/etc/localstack/init/ready.d/init-s3tables.sh"
+      - "/var/run/docker.sock:/var/run/docker.sock"
