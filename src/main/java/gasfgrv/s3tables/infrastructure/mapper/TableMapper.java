@@ -1,5 +1,6 @@
 package gasfgrv.s3tables.infrastructure.mapper;
 
+import gasfgrv.s3tables.domain.model.DadosTabela;
 import gasfgrv.s3tables.infrastructure.dto.TableDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -31,6 +32,10 @@ public interface TableMapper {
             @Mapping(expression = "java(tableResponse.tableBucketId())", target = "tableBucketId")
     })
     TableDto toDto(GetTableResponse tableResponse);
+
+    TableDto toDto(DadosTabela dadosTabela);
+
+    DadosTabela toDomain(TableDto tableDto);
 
     @Named("instantToZonedDateTime")
     default ZonedDateTime instantToZonedDateTime(Instant instant) {
