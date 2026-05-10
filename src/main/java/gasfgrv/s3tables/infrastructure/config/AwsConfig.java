@@ -1,6 +1,5 @@
 package gasfgrv.s3tables.infrastructure.config;
 
-import gasfgrv.s3tables.infrastructure.prop.AwsProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
@@ -32,11 +31,9 @@ public class AwsConfig {
 
     @Bean
     public S3TablesClient s3TablesClient(AwsCredentials awsCredentials) {
-        StaticCredentialsProvider credentialsProvider = StaticCredentialsProvider.create(awsCredentials);
-
         return S3TablesClient.builder()
                 .region(Region.US_EAST_1)
-                .credentialsProvider(credentialsProvider)
+                .credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
                 .build();
     }
 
